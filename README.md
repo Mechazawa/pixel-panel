@@ -41,6 +41,11 @@ Output STL files are placed in `build/`:
 |------|----------|
 | `top_plate_padding.stl` | Black filament |
 | `top_plate_pixels.stl` | Transparent filament |
-| `spacer.stl` | Any color |
-| `back_plate.stl` | Any color |
-| `compartment.stl` | Any color |
+| `spacer.stl` | Black filament |
+| `back_plate.stl` | Black filament |
+| `compartment.stl` | Black filament |
+| `jig.stl` | Any color (reusable) |
+
+## Gluing jig
+
+The jig holds all layers in alignment while gluing. It's a base plate with L-shaped corner walls that sit slightly above the fully assembled stack. A large hole in the base lets you push the finished assembly out from below.
