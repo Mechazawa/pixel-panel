@@ -1,6 +1,4 @@
-require("../config.scad");
-
-plateHeight = 1.80; // base plate height
+include <../config.scad>;
 
 colorBox = "white";
 colorPadding = "black";
