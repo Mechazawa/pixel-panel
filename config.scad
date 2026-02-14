@@ -1,6 +1,6 @@
 // General
-countX = 8;
-countY = 8;
+countX = 12;
+countY = 12;
 
 // Based on the LED strips you want to use
 ledSize = 4.85;
