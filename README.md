@@ -8,16 +8,18 @@ A 3D-printable pixel art display powered by WS2812B (NeoPixel) LED strips and [W
 
 The panel is made up of four stacked layers (bottom to top):
 
-| Layer | Description |
-|-------|-------------|
-| **Electronics compartment** | Enclosed box that houses the controller and wiring. Has configurable holes for cable routing. |
-| **Back plate** | Holds the LED strips in cutout channels. Wiring holes at each end let strips bend down into the compartment. |
-| **Spacer** | Grid of walls that separates each LED into its own cell, preventing light bleed. Alignment keys on the edge walls slot into the back plate cutouts. |
-| **Top plate** | The visible face. Black grid padding with raised white pixel diffuser boxes. Printed in two materials. |
+| Layer                       | Description                                                                                                                                         |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Electronics compartment** | Enclosed box that houses the controller and wiring. Has configurable holes for cable routing.                                                       |
+| **Back plate**              | Holds the LED strips in cutout channels. Wiring holes at each end let strips bend down into the compartment.                                        |
+| **Spacer**                  | Grid of walls that separates each LED into its own cell, preventing light bleed. Alignment keys on the edge walls slot into the back plate cutouts. |
+| **Top plate**               | The visible face. Black grid padding with raised white pixel diffuser boxes. Printed in two materials.                                              |
 
 ## Downloads
 
-Not a developer? Don't want to deal with code? Just want the STL files? I get it — [you're not the first](https://www.reddit.com/r/github/comments/1at9br4/i_am_new_to_github_and_i_have_lots_to_say/).
+> "SO WHY THE FUCK IS THERE CODE? make an ~~EXE~~ STL file and give it to me. STUPID FUCKING SMELLY NERDS"
+>
+> - [automatic*purpose*](https://www.reddit.com/r/github/comments/1at9br4/i_am_new_to_github_and_i_have_lots_to_say/) 2024
 
 Grab the latest pre-built STLs from the [releases page](https://github.com/Mechazawa/pixel-panel/releases). Pick the zip that matches your LED strip and grid size:
 
@@ -33,7 +35,7 @@ If your strip isn't listed, see the [Building](#building) section to generate ST
 ## Hardware
 
 - **LED strips**: Any addressable LED strip (e.g. WS2812B, SK6812). Adjust the LED dimensions in `config.scad` to match your strips.
-- **Grid size**: Configurable, default 12x12 pixels
+- **Microcontroller**: Any microcontroller [compatible](https://kno.wled.ge/basics/compatible-controllers/) with [WLED](https://kno.wled.ge/)
 - **Firmware**: [WLED](https://kno.wled.ge/)
 
 ## Configuration
@@ -42,7 +44,7 @@ All dimensions are defined in `config.scad`. Adjust the grid size, LED strip mea
 
 ## Building
 
-Requires [OpenSCAD](https://openscad.org/) installed (via PATH or macOS app bundle).
+Requires [OpenSCAD](https://openscad.org/) installed (via PATH or macOS app bundle). Currently only Linux and MacOS are supported.
 
 ```sh
 make          # Build all STL files
@@ -52,14 +54,14 @@ make clean    # Remove build output
 
 Output STL files are placed in `build/`:
 
-| File | Material |
-|------|----------|
-| `top_plate_padding.stl` | Black filament |
-| `top_plate_pixels.stl` | Transparent filament |
-| `spacer.stl` | Black filament |
-| `back_plate.stl` | Black filament |
-| `compartment.stl` | Black filament |
-| `jig.stl` | Any color (reusable) |
+| File                    | Material             |
+| ----------------------- | -------------------- |
+| `top_plate_padding.stl` | Black filament       |
+| `top_plate_pixels.stl`  | Transparent filament |
+| `spacer.stl`            | Black filament       |
+| `back_plate.stl`        | Black filament       |
+| `compartment.stl`       | Black filament       |
+| `jig.stl`               | Any color (reusable) |
 
 ## Gluing jig
 
