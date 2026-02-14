@@ -32,7 +32,7 @@ compartmentWall = spacerWall;
 compartmentBaseHeight = 2.0;
 compartmentHoles = [
   // width, height
-  [10, 11], // Bottom
+  [10, 9], // Bottom
   [0, 0], // Left
   [0, 0], // Right
   [0, 0], // Top
