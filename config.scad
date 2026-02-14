@@ -14,17 +14,20 @@ pixelSize = cellSize - pixelSpacing;
 pixelHeight = 1.00; 
 plateHeight = 1.80; 
 
+// Back plate
+backPlateHeight = 3.0;
+backPlateCutoutWidth = 4.0;
+backPlateCutoutDepth = 1.0;
+backPlateWiringHole = 3.4;
+
 // Spacer
 spacerHeight = 6.0;
 spacerWall = 2.0;
-spacerNotchHeight = 1.0;
-spacerNotchWidth = ledStripWidth - 2;
-
-// Back plate
-backPlateCutoutSize = 4.0;
+spacerKeyHeight = backPlateCutoutDepth - 0.1;
+spacerKeyWidth = ledStripWidth - 2;
 
 // Electronics compartment
-compartmentHeight = 15.0
+compartmentHeight = 15.0;
 compartmentWall = spacerWall;
 compartmentBaseHeight = 2.0;
 compartmentHoles = [
@@ -33,4 +36,4 @@ compartmentHoles = [
   [0, 0], // Left
   [0, 0], // Right
   [0, 0], // Top
-]
+];
