@@ -1,4 +1,5 @@
 BUILD_DIR := build
+OVERRIDES :=
 
 # Find OpenSCAD: check PATH first, then macOS app bundle locations
 OPENSCAD := $(shell which openscad 2>/dev/null)
@@ -30,25 +31,25 @@ $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 $(BUILD_DIR)/top_plate_padding.stl: src/top_plate.scad config.scad | $(BUILD_DIR)
-	"$(OPENSCAD)" -o $@ -D 'part="padding"' $<
+	"$(OPENSCAD)" -o $@ $(OVERRIDES) -D 'part="padding"' $<
 
 $(BUILD_DIR)/top_plate_pixels.stl: src/top_plate.scad config.scad | $(BUILD_DIR)
-	"$(OPENSCAD)" -o $@ -D 'part="pixels"' $<
+	"$(OPENSCAD)" -o $@ $(OVERRIDES) -D 'part="pixels"' $<
 
 $(BUILD_DIR)/spacer.stl: src/spacer.scad config.scad | $(BUILD_DIR)
-	"$(OPENSCAD)" -o $@ $<
+	"$(OPENSCAD)" -o $@ $(OVERRIDES) $<
 
 $(BUILD_DIR)/back_plate.stl: src/back_plate.scad config.scad | $(BUILD_DIR)
-	"$(OPENSCAD)" -o $@ $<
+	"$(OPENSCAD)" -o $@ $(OVERRIDES) $<
 
 $(BUILD_DIR)/compartment.stl: src/compartment.scad config.scad | $(BUILD_DIR)
-	"$(OPENSCAD)" -o $@ $<
+	"$(OPENSCAD)" -o $@ $(OVERRIDES) $<
 
 $(BUILD_DIR)/jig.stl: src/jig.scad config.scad | $(BUILD_DIR)
-	"$(OPENSCAD)" -o $@ $<
+	"$(OPENSCAD)" -o $@ $(OVERRIDES) $<
 
 $(BUILD_DIR)/render.png: src/render.scad $(SCAD_SOURCES) config.scad | $(BUILD_DIR)
-	"$(OPENSCAD)" -o $@ --imgsize=1920,1080 --colorscheme=Tomorrow $<
+	"$(OPENSCAD)" -o $@ $(OVERRIDES) --imgsize=1920,1080 --colorscheme=Tomorrow $<
 	magick $@ -transparent "#F8F8F8" $@
 
 clean:

@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        grid: ['8x8', '12x12']
+        led:
+          - { name: '5050-30leds',  ledSize: 5.0, ledSpacing: 28.33, ledStripWidth: 10.0, backPlateCutoutWidth: 11.0 }
+          - { name: '5050-60leds',  ledSize: 5.0, ledSpacing: 11.67, ledStripWidth: 10.0, backPlateCutoutWidth: 11.0 }
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install OpenSCAD
+        run: sudo apt-get update && sudo apt-get install -y openscad zip
+
+      - name: Build STLs
+        run: |
+          GRID="${{ matrix.grid }}"
+          make all \
+            BUILD_DIR="build" \
+            OVERRIDES="-D countX=${GRID%x*} -D countY=${GRID#*x} -D ledSize=${{ matrix.led.ledSize }} -D ledSpacing=${{ matrix.led.ledSpacing }} -D ledStripWidth=${{ matrix.led.ledStripWidth }} -D backPlateCutoutWidth=${{ matrix.led.backPlateCutoutWidth }}"
+
+      - name: Package zip
+        run: |
+          mkdir -p dist
+          zip -j "dist/pixel-panel-${{ matrix.led.name }}-${{ matrix.grid }}.zip" build/*.stl
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pixel-panel-${{ matrix.led.name }}-${{ matrix.grid }}
+          path: dist/*.zip
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip
+          generate_release_notes: true
