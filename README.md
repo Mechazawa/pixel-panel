@@ -2,9 +2,13 @@
 
 A 3D-printable pixel art display powered by WS2812B (NeoPixel) LED strips and [WLED](https://kno.wled.ge/) firmware.
 
-![Exploded assembly view](docs/render.png)
+<table>
+  <tr>
+    <td align="center"><img src="docs/demo.avif" alt="Demo video" height="600"></td>
+    <td align="center"><img src="docs/render.png" alt="Exploded assembly view" height="600"></td>
+  </tr>
+</table>
 
-![demo](docs/demo.avif)
 
 ## Assembly
 
